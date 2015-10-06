@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Analytics</title>
+		
+	</head>
+	<body>
+		<h1>Real time Analytics</h1>
+		<hr>
+		<div>Total Users: {{j["total"]}}</div>
+		<div>Mobile Users: {{j["mob"]}}</div>
+		<div>Tablet Users: {{j["tab"]}}</div>
+		<div>Desktop Users: {{j["desk"]}}</div>
+
+
+		<table style="width:50%" border="1">
+		{% for city in j["cities"] %}
+			<tr>
+				<td>{{city[0]}}</td>
+				<td>{{city[1]}}</td> 
+			</tr>
+		{% endfor %}	
+
+		</table>
+
+		<br>
+		<table style="width:50%" border="1">
+		{% for source in j["sources"] %}
+			<tr>
+				<td>{{source[0][0]}}</td>
+				<td>{{source[0][1]}}</td> 
+				<td>{{source[1]}}</td> 
+			</tr>
+		{% endfor %}	
+
+		</table>
+		<br>
+
+	</body>
+
+</html>

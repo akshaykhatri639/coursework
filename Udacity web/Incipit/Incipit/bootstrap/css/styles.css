@@ -1,0 +1,164 @@
+a:hover{
+  cursor: pointer;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body{
+	background-image: url('../img/back1.png');
+	padding-top:80px;
+	margin-bottom: 60px;
+}
+.page-header{
+	margin-top: 0px;
+
+}
+.panel-body{
+
+	padding-top: 0px;
+}
+.featuredImg
+{
+	margin-bottom: 20px;
+	width: 100%;
+}
+.panel
+{
+	opacity: 0.95;
+}
+.navbar-static-bottom {
+   position:absolute;
+   border-radius: 0;
+   bottom: 0;
+   margin-bottom:0px;
+   width:100%; 
+}
+.carousel
+{
+	margin-bottom: 40px;
+}
+.seperate
+{
+    border-bottom: 1px solid #ccc;
+}
+
+.open > .dropdown-menu {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);  
+  opacity:0.8;
+}
+  
+.dropdown-menu {
+  opacity:0;
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  -webkit-animation-fill-mode: forwards;  
+  animation-fill-mode: forwards; 
+  -webkit-transform: scale(1, 0);
+  display: block; 
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  width: 100%;
+}
+
+
+
+td{
+	padding-right: 10px;
+	font-family:sans-serif;
+    color: #ffffff;
+}
+#formhead{
+    color: #ffffff;
+    font-family: consolas;
+    font-size: 60px;
+    padding:0px 70px 0px 70px;
+}
+
+div table tr td input{
+    padding:3px; 
+    border-radius: 2px;
+}
+#regform{
+    padding: 0px 70px 0px 60px;
+}
+
+#regform input{
+    font-family: tahoma;
+    margin-top:10px; 
+    margin-left: 10px;
+    padding: 4px;
+    font-size: 20px;
+    height:40px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+#regform .long{
+    width: 414px;
+}
+
+#regform #submitbtn{
+    margin-left:110px;
+}
+
+#main #collage{
+    height:80%;
+	margin:60px auto;
+	width:980px;
+    border:0px;
+    border-radius:20px;
+    
+}
+
+/*This is the head section*/
+#head{
+	height:18%;	
+	background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+/*This is the subhead section*/
+#subhead{
+	height:75%;
+	margin:20px auto;
+	width:980px;
+}
+/*This is the logo section*/
+#logo{
+	margin-top: 5px;
+	padding-left: 30px;
+	font-family:consolas;
+	font-size:50px;
+	float: left;
+}
+
+/*This is the form-login section*/
+#login{
+	margin-top: 25px;
+	padding-right: 30px;
+	font-size: 10px;
+	float:right;
+}
+
+/*This is the main section*/
+#main{
+    background-image: url(images/collage.jpg);
+    margin-top: 10px;
+    width: auto;
+	height:80%;	
+}
+
+
+
+/*This is the foot section*/
+#foot{
+	height:20%;	
+    margin-top: 10px;
+	background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.3);
+
+}
+.navbar-btn{
+	margin-right: 10px;
+	padding-left: 10px;
+}

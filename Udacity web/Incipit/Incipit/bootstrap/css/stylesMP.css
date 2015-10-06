@@ -1,0 +1,51 @@
+  #Mplayer{
+  position: fixed;
+  margin-left: 19%;
+  margin-top: -124px;
+  width: 150px;
+  height: 150px;
+  }
+  #playerDropDown {
+  position:fixed;
+  bottom:0;
+  width: 100%;
+  padding: -20px -20px;
+  margin-left: -10px;
+  margin-bottom: -5px;
+  }
+  #playerOpen {
+  pointer-events:auto;
+  background: 68px 10px #000000;
+  color: #ececec;
+  margin-left: 20px;
+  width: 200px;
+  cursor: pointer;
+  margin-bottom: -65px;
+  padding: 10px 10px 15px 20px;
+  font-size: 26px;
+  text-decoration: none;
+  border-radius: 5px 5px 0px 0px;  
+  }
+  #playerDiv {
+  pointer-events:auto;
+  opacity: 0.95;
+  background:#454545;
+  height: 200px;
+  box-shadow:inset 0 20px 50px 5px #000000;
+  width:101%;
+  color: #CCCCCC;
+  text-align:center;
+  font-size: 46px;
+  padding: 30px 0;
+  text-decoration: none; 
+  }
+  #playerDropDown #playerDashboard {
+  display: none;
+}
+iframe{
+  border-radius: 15px;
+}
+#play
+{
+  width: 60px;
+}

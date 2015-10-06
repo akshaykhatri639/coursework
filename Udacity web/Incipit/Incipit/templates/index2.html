@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Incipit</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="css/bootstrap" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="css/bootstrap" href="/bootstrap/css/styles.css">
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="bootstrap/js/jScript.js"></script>
+	<link href="bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    
+    
+    
+    
+    
+	<style type="text/css">
+		#nav-top
+		{
+			height: 120px;
+			padding-top: 40px;
+
+		}
+		.navbar-inverse .navbar-brand {
+  			color: white;
+		}
+		.navbar-inverse .navbar-brand:hover,
+		.navbar-inverse .navbar-brand:focus {
+  			color: white;
+  			background-color: transparent;
+		}
+	</style>
+</head>
+<body style="background-image:url(img/collage.jpg)">
+    		            <br />
+<b>Notice</b>:  Undefined index: reg in <b>C:\xampp\htdocs\Incipit - Music Social Networking - 5,16,24,29,31,47\login.php</b> on line <b>46</b><br />
+		
+    
+    
+    
+    
+    
+<div class="navbar navbar-inverse navbar-fixed-top" id="nav-top">
+	<div class="container">
+
+	<div class="navbar-header">
+		<a href="#" class="navbar-brand" style="font-family:consolas;
+	font-size:50px;text-decoration:none;"> &nbsp   &#9834incipit</a>
+
+		<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+
+		</button></div>
+		<div class="collapse navbar-collapse navHeaderCollapse">
+			<form action="login.php" method="POST" name="form1">
+			<ul class="nav nav-pills navbar-right">
+				<li style="margin-right:5px">
+  					<input type="text" class="form-control" name="email" placeholder="Username" required="required">
+				</li>
+				<li style="margin-right:5px">
+				<div class="input-group">
+      				<input type="password" class="form-control" placeholder="Password" name="pass" style="width:200px" required="required">
+      				<span class="input-group-btn" style="display:inline">
+        			<button class="btn btn-primary" onclick="validateForm()" type="submit">Login</button>
+      			</span>
+    			</div>
+    			
+    			</li>
+				<li class="dropdown">
+					<div class="btn-group">
+  						<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-align-justify"></i></a>
+  						<ul class="dropdown-menu">
+    						<li><a href="index.html">Home</a></li>
+							<li><a href="blog1.html">Blog</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="#contact" data-toggle="modal">Contact</a></li>
+  						</ul>
+					</div>
+				</li>
+			</ul>
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+<div class="container">
+	
+	<div id="main">
+        <div id="collage">
+            <div id="formhead">Not a member yet? Sign up</div>
+            <div id="regform">
+            <form action="register.php" method="POST" name="form2">
+                <div>
+                    <input type="text" placeholder="First Name" name="fname" required="required">
+                    <input type="text" placeholder="Last Name" name="lname" required="required">
+                </div>
+                <div>
+                    <input type="email" placeholder="Email" class="long" name="email" required="required">
+                </div>
+                <div>
+                    <input type="password" placeholder="Password" class="long" name="pass" required="required">
+                </div>
+                <div>
+                    <input type="password" placeholder="Re-enter Password" class="long" name="repass" required="required">
+                </div>
+                <div>
+                    <input placeholder="Birth Date" class="long" type="text" onfocus="(this.type='date')" name="bdate" required="required">
+                </div>
+                	<input type="hidden" name="date" value="1415488353" />
+                <div>
+                    <input type="submit" value="Sign Up" id="submitbtn" class="btn btn-success">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+
+</div>
+
+
+<div class="navbar navbar-inverse navbar-static-bottom">
+		
+		<div class="container">
+			<p class="navbar-text pull-left">Copyright Protected</p>
+			<a class="navbar-btn btn-primary btn pull-right" style="width:35px;height:35px;"><i class="fa fa-facebook fa-lg"></i></a>
+			<a class="navbar-btn btn-info btn pull-right" style="width:35px;height:35px;"><i class="fa fa-twitter fa-lg"></i></a>
+			<a class="navbar-btn btn-danger btn pull-right" style="width:35px;height:35px;"><i class="fa fa-google-plus fa-lg"></i></a>
+
+		</div>
+</div>
+
+<div class="modal fade" id="contact" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	<div class="form-horizontal">
+		<div class="modal-header">
+			<h4>Contact Us</h4>
+			
+		</div>
+		<div class="modal-body">
+			<div class="form-group">
+				<label for="contact-name" class="col-lg-2 control-label">Name:</label>
+
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="contact-name" placeholder="Full Name">
+
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="contact-email" class="col-lg-2 control-label">Email:</label>
+
+				<div class="col-lg-10">
+					<input type="email" class="form-control" id="contact-email" placeholder="Email ID">
+
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="contact-comm" class="col-lg-2 control-label">Comment:</label>
+
+				<div class="col-lg-10">
+					<textarea class="form-control" rows="8" id="contact-comm"></textarea>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-info" type="submit">Send</button>
+			<a class="btn btn-default" data-dismiss="modal">Close</a>
+
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+</div>
+
+
+<div class="modal fade" id="login" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	<div class="form-horizontal">
+		<div class="modal-header">
+			<h4>Login</h4>
+			
+		</div>
+		<div class="modal-body">
+			<div class="form-group">
+				<label for="contact-email" class="col-lg-2 control-label">Email ID:</label>
+
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="contact-email" placeholder="Enter your Email ID">
+
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="contact-password" class="col-lg-2 control-label">Password:</label>
+
+				<div class="col-lg-10">
+					<input type="password" class="form-control" id="contact-email" placeholder="Enter your password">
+
+				</div>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-info" type="submit">Login</button>
+			<a class="btn btn-warning pull-left" href="#contact">Register</a>
+			<a class="btn btn-default" data-dismiss="modal">Close</a>
+
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+</div>
+
+</body>
+</html>
+

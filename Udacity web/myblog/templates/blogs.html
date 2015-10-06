@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Blog</title>
+	</head>
+	<body>
+		<h1>This is a blog Kaka!</h1>
+		
+
+		<hr>
+
+		{% for blog in blogs %}
+			<br>
+			<div>{{blog.subject}}</div>
+			<pre>{{blog.content}}</pre>
+			<hr>
+			<br>
+		{% endfor %}
+
+
+	</body>
+
+</html>

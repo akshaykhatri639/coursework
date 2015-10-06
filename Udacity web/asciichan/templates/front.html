@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>/ascii/</title>
+	</head>
+	<body>
+		<h1>/ascii/</h1>
+		<form method="post">
+			<label for="title">
+			<div>Title</div>
+			<input type="text" id="title" name="title" value="{{title}}">
+			</label>
+			<label for="art">
+				<div>Art</div>
+				<textarea name="art" id="art">{{art}}</textarea>
+			</label>
+			<div>{{error}}</div>
+			<input type="submit">
+		</form>
+
+		<hr>
+		{% if img_url %}
+			<img src="{{img_url}}">
+		{% endif %}
+		<hr>
+
+		{% for art in arts %}
+			<div>{{art.title}}</div>
+			<pre>{{art.art}}</pre>
+			<hr>
+			<br>
+
+
+		{% endfor %}
+
+
+	</body>
+
+</html>
