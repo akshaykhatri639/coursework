@@ -1,4 +1,4 @@
-function [J grad] = nnCostFunction(nn_params, ...
+function [J, grad] = nnCostFunction(nn_params, ...
                                    input_layer_size, ...
                                    hidden_layer_size, ...
                                    num_labels, ...
@@ -16,8 +16,8 @@ function [J grad] = nnCostFunction(nn_params, ...
 
 % Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
 % for our 2 layer neural network
-Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
-                 hidden_layer_size, (input_layer_size + 1));
+Theta1 = reshape( nn_params(1:hidden_layer_size * (input_layer_size + 1)) , ...
+                 hidden_layer_size, (input_layer_size + 1) );
 
 Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
                  num_labels, (hidden_layer_size + 1));
@@ -62,22 +62,72 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+Y = zeros(m,num_labels);
 
+for i=1:m
+    j = y(i);
+    Y(i,j) = 1;
+end;
 
+one_col = ones(m,1);
+X = [one_col, X];
+hidden_activations = sigmoid(X * Theta1');
 
+hidden_activations = [one_col,hidden_activations];
 
+h = sigmoid(hidden_activations*Theta2');
 
+for p=1:m
+    for q=1:num_labels
+        J = J + ((Y(p,q))*log(h(p,q)) + ((1-Y(p,q)))*log(1 - h(p,q)));
+    end;
+end;
+J = -1 * J/m;
 
+%regularized cost implementation
+temp = Theta1.^2;
+temp(:,1) = zeros(hidden_layer_size,1);
+reg_cost = sum(sum(temp));
+temp2 = Theta2.^2;
+temp2(:,1) = zeros(num_labels,1);
+reg_cost = reg_cost + sum(sum(temp2));
+J = J + (lambda*reg_cost/(2*m));
 
+D1 = zeros(size(Theta1));
+D2 = zeros(size(Theta2));
+for p1=1:m
+    a1 = X(p1,:);
+    z2 = a1 * Theta1';
+    a2 = sigmoid(z2);
+    a2 = [1,a2];
+    z3 = a2 * Theta2';
+    a3 = sigmoid(z3);
+    
+    delta3 = a3 - Y(p1,:);
+    %fprintf('Lsize of a1 is :\n')
+    %display(size(a1));
+    %fprintf('Lsize of D1 is :\n')
+    %display(size(D1));
+    %fprintf('Lsize of theta 1 is :\n')
+    %display(size(Theta1));
+    %display(size(z2));
+    delta2 = (delta3 * Theta2(:,2:end)) .* sigmoidGradient(z2);
+    D1 = D1 + delta2' * a1;
+    D2 = D2 + delta3' * a2;
+end;
+%fprintf('Lsize of zeros is :\n')
+%display(size(zeros(size(Theta1,2),1)));
+%fprintf('Lsize of t1 is :\n')
+%display(size(Theta1(:,2:end)));
 
+temp1 = Theta1 ./ m;
+temp2 = Theta2 ./ m;
+temp1(:,1) = zeros(size(Theta1,1),1);
+temp2(:,1) = zeros(size(Theta2,1),1);
+%display(temp1);
 
-
-
-
-
-
-
-
+Theta1_grad = D1 / m + lambda*temp1;
+Theta2_grad = D2 / m + lambda*temp2;
 
 
 % -------------------------------------------------------------
