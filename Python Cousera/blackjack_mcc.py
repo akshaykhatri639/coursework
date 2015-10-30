@@ -1,3 +1,5 @@
+# CAN BE RUN ONLY ON CODESKULPTOR.ORG
+
 import simplegui
 import random
 

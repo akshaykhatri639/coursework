@@ -1,3 +1,5 @@
+# CAN BE RUN ONLY ON CODESKULPTOR.ORG
+
 # implementation of Spaceship - program template for RiceRocks
 import simplegui
 import math
