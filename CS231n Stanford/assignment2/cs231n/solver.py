@@ -115,6 +115,7 @@ class Solver(object):
 
     self.print_every = kwargs.pop('print_every', 10)
     self.verbose = kwargs.pop('verbose', True)
+    self.num_iter = kwargs.pop('num_iter', None)
 
     # Throw an error if there are extra keyword arguments
     if len(kwargs) > 0:
@@ -222,6 +223,8 @@ class Solver(object):
     num_train = self.X_train.shape[0]
     iterations_per_epoch = max(num_train / self.batch_size, 1)
     num_iterations = self.num_epochs * iterations_per_epoch
+    if self.num_iter:
+        num_iterations = self.num_iter
 
     for t in xrange(num_iterations):
       self._step()
@@ -242,7 +245,7 @@ class Solver(object):
       # Check train and val accuracy on the first iteration, the last
       # iteration, and at the end of each epoch.
       first_it = (t == 0)
-      last_it = (t == num_iterations + 1)
+      last_it = (t == num_iterations - 1)
       if first_it or last_it or epoch_end:
         train_acc = self.check_accuracy(self.X_train, self.y_train,
                                         num_samples=1000)

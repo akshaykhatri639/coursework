@@ -30,9 +30,6 @@ def affine_relu_backward(dout, cache):
   return dx, dw, db
 
 
-pass
-
-
 def conv_relu_forward(x, w, b, conv_param):
   """
   A convenience layer that performs a convolution followed by a ReLU.
@@ -91,3 +88,61 @@ def conv_relu_pool_backward(dout, cache):
   dx, dw, db = conv_backward_fast(da, conv_cache)
   return dx, dw, db
 
+
+def affine_bn_relu_forward(x, w, b, bn, bn_params):
+    a, aff_cache = affine_forward(x, w, b)
+    b, bn_cache = batchnorm_forward(a, bn[0, :], bn[1, :], bn_params)
+    out, relu_cache = relu_forward(b)
+    cache = (aff_cache, bn_cache, relu_cache)
+    return out, cache
+
+def affine_bn_relu_backward( dout, cache):
+    aff_cache, bn_cache, relu_cache = cache
+    db = relu_backward(dout, relu_cache)
+    da, dgamma, dbeta = batchnorm_backward(db, bn_cache)
+    dx, dw, db = affine_backward(da, aff_cache)
+    N = dgamma.shape[0]
+    dbn = np.zeros((2, N))
+    dbn[0, :] = dgamma
+    dbn[1, :] = dbeta
+    return dx, dw, db, dbn
+
+
+def conv_bn_relu_fwd(x, w, b, bn, conv_param, bn_params):
+    p, conv_cache = conv_forward_fast(x, w, b, conv_param)
+    q, bn_cache = spatial_batchnorm_forward(p, bn[0, :], bn[1, :], bn_params)
+    out, relu_cache = relu_forward(q)
+    cache = (conv_cache, bn_cache, relu_cache)
+    return out, cache
+
+def conv_bn_relu_bkwd(dout, cache):
+    conv_cache, bn_cache, relu_cache = cache
+    dq = relu_backward(dout, relu_cache)
+    dp, dgamma, dbeta = spatial_batchnorm_backward(dq, bn_cache)
+    dx, dw, db = conv_backward_fast(dp, conv_cache)
+    N = dgamma.shape[0]
+    dbn = np.zeros((2, N))
+    dbn[0, :] = dgamma
+    dbn[1, :] = dbeta
+    return dx, dw, db, dbn
+
+
+def conv_bn_relu_pool_fwd(x, w, b, bn, conv_param, bn_params, pool_param):
+    p, conv_cache = conv_forward_fast(x, w, b, conv_param)
+    q, bn_cache = spatial_batchnorm_forward(p, bn[0, :], bn[1, :], bn_params)
+    r, relu_cache = relu_forward(q)
+    out, pool_cache = max_pool_forward_fast(r, pool_param)
+    cache = (conv_cache, bn_cache, relu_cache, pool_cache)
+    return out, cache
+
+def conv_bn_relu_pool_bkwd(dout, cache):
+    conv_cache, bn_cache, relu_cache, pool_cache = cache
+    dr = max_pool_backward_fast(dout, pool_cache)
+    dq = relu_backward(dr, relu_cache)
+    dp, dgamma, dbeta = spatial_batchnorm_backward(dq, bn_cache)
+    dx, dw, db = conv_backward_fast(dp, conv_cache)
+    N = dgamma.shape[0]
+    dbn = np.zeros((2, N))
+    dbn[0, :] = dgamma
+    dbn[1, :] = dbeta
+    return dx, dw, db, dbn
